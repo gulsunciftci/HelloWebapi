@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace HelloWebapi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]s")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -23,8 +23,41 @@ namespace HelloWebapi.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        //aşağıdaki metod bir action metoddur
+
+        [HttpGet] //attribute
         public IEnumerable<WeatherForecast> Get()
+        {
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
+
+        //Aşağıdaki iki metodda 3 numaralı id ye ait wheatherForecast i getirir 
+
+        [HttpGet] //attribute
+        //api/WheatherForecasts?id=3
+        public IEnumerable<WeatherForecast> GetById([FromQuery] string id )
+        {
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = DateTime.Now.AddDays(index),
+                TemperatureC = rng.Next(-20, 55),
+                Summary = Summaries[rng.Next(Summaries.Length)]
+            })
+            .ToArray();
+        }
+        
+        
+        [HttpGet("{id}")] //attribute
+        //api/WheatherForecasts/3
+        public IEnumerable<WeatherForecast> GetForecast(string id)
         {
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
