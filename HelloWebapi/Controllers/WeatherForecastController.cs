@@ -38,26 +38,41 @@ namespace HelloWebapi.Controllers
             .ToArray();
         }
 
-        //Aşağıdaki iki metodda 3 numaralı id ye ait wheatherForecast i getirir 
+        //////Aşağıdaki iki metodda 3 numaralı id ye ait wheatherForecast i getirir 
 
-        [HttpGet] //attribute
-        //api/WheatherForecasts?id=3
-        public IEnumerable<WeatherForecast> GetById([FromQuery] string id )
-        {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }
-        
-        
+        //[HttpGet] //attribute
+        ////api/WheatherForecasts?id=3
+        //public IEnumerable<WeatherForecast> GetById([FromQuery] string id)
+        //{
+        //    var rng = new Random();
+        //    return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        //    {
+        //        Date = DateTime.Now.AddDays(index),
+        //        TemperatureC = rng.Next(-20, 55),
+        //        Summary = Summaries[rng.Next(Summaries.Length)]
+        //    })
+        //    .ToArray();
+        //}
+
+
+        //[HttpGet("{id}")] //attribute
+        ////api/WheatherForecasts/3
+        //public IEnumerable<WeatherForecast> GetForecast(string id)
+        //{
+        //    var rng = new Random();
+        //    return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        //    {
+        //        Date = DateTime.Now.AddDays(index),
+        //        TemperatureC = rng.Next(-20, 55),
+        //        Summary = Summaries[rng.Next(Summaries.Length)]
+        //    })
+        //    .ToArray();
+        //}
+
+
         [HttpGet("{id}")] //attribute
         //api/WheatherForecasts/3
-        public IEnumerable<WeatherForecast> GetForecast(string id)
+        public ActionResult<WeatherForecast> GetForecast(string id)
         {
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
@@ -66,7 +81,7 @@ namespace HelloWebapi.Controllers
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             })
-            .ToArray();
+            .ToArray()[0];
         }
     }
 }
