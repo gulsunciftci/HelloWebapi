@@ -95,5 +95,20 @@ namespace BookStore.Controllers
             return Ok();
 
         }
+
+        //silme
+        [HttpDelete("{id}")]
+        public IActionResult DeleteBook(int id)
+        {
+            var book = BookList.SingleOrDefault(x => x.Id == id);
+            if (book is null)
+            {
+                return BadRequest();
+            }
+            BookList.Remove(book);
+
+            return Ok();
+
+        }
     }
 }
