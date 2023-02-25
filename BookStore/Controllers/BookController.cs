@@ -38,14 +38,14 @@ namespace BookStore.Controllers
            }
        };
 
-       // [HttpGet]
-       //public List<Book> GetBooks()
-       // {
-       //     var bookList = BookList.OrderBy(x => x.Id).ToList<Book>();
-       //     return bookList;
-        
-        
-       // }
+        [HttpGet]
+        public List<Book> GetBooks()
+        {
+            var bookList = BookList.OrderBy(x => x.Id).ToList<Book>();
+            return bookList;
+
+
+        }
 
         [HttpGet("{id}")] //roottan alıyoruz.Daha doğru olan yaklaşım budur yani roottan almaktır
         public Book GetById(int id)
@@ -55,12 +55,44 @@ namespace BookStore.Controllers
 
 
         }
-        [HttpGet] //parametresiz sadece bir tane HttpGet olabilir
-        public Book GetById([FromQuery] string id)
-        {
-            var book = BookList.Where(book => book.Id == Convert.ToInt32(id)).SingleOrDefault();
-            return book;
+        //[HttpGet] //parametresiz sadece bir tane HttpGet olabilir
+        //public Book GetById([FromQuery] string id)
+        //{
+        //    var book = BookList.Where(book => book.Id == Convert.ToInt32(id)).SingleOrDefault();
+        //    return book;
 
+
+        //}
+
+        //ekleme
+        [HttpPost]
+        public IActionResult AddBook([FromBody] Book newbook)
+        {
+            var book = BookList.SingleOrDefault(x=>x.Title==newbook.Title);
+            if (book is not null)
+            {
+                return BadRequest();
+            }
+            BookList.Add(newbook);
+            return Ok();
+        
+        }
+
+        //güncelleme
+        [HttpPut("{id}")]
+        public IActionResult UpdateBook(int id, [FromBody] Book updatedbook)
+        {
+            var book = BookList.SingleOrDefault(x => x.Id == id);
+            if (book is null)
+            {
+                return BadRequest();
+            }
+            book.GenreId=updatedbook.GenreId!=default?updatedbook.GenreId:book.GenreId;
+            book.PageCount = updatedbook.PageCount != default ? updatedbook.PageCount : book.PageCount;
+            book.PublishDate = updatedbook.PublishDate != default ? updatedbook.PublishDate : book.PublishDate;
+            book.Title = updatedbook.Title != default ? updatedbook.Title : book.Title;
+
+            return Ok();
 
         }
     }
