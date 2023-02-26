@@ -21,7 +21,7 @@ namespace BookStore.DBOperations
 
                 new Book
                 {
-                    Id = 1,
+                    
                     Title = "Lean Startup",
                     GenreId = 1,
                     PageCount = 200,
@@ -29,7 +29,7 @@ namespace BookStore.DBOperations
                 },
                 new Book
                 {
-                    Id = 2,
+                   
                     Title = "Herland",
                     GenreId = 2,
                     PageCount = 250,
@@ -37,7 +37,7 @@ namespace BookStore.DBOperations
                 },
                 new Book
                 {
-                    Id = 3,
+                   
                     Title = "Dune",
                     GenreId = 2,
                     PageCount = 540,
