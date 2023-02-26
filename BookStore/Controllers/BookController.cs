@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using BookStore.DBOperations;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+
 
 namespace BookStore.Controllers
 {
@@ -10,38 +11,19 @@ namespace BookStore.Controllers
 
     public class BookController : ControllerBase
     {
-        private static List<Book> BookList = new List<Book>()
-       {
-           new Book
-           {
-               Id=1,
-               Title="Lean Startup",
-               GenreId=1,
-               PageCount=200,
-               PublishDate=new System.DateTime(2001,06,12)
-           },
-           new Book
-           {
-               Id=2,
-               Title="Herland",
-               GenreId=2,
-               PageCount=250,
-               PublishDate=new System.DateTime(2010,05,23)
-           },
-           new Book
-           {
-               Id=3,
-               Title="Dune",
-               GenreId=2,
-               PageCount=540,
-               PublishDate=new System.DateTime(2001,12,21)
-           }
-       };
+        
+        private readonly BookStoreDbContext _context; //readonly değişkenler sadece constructor içinden değiştirilebilir
+        
+        public BookController(BookStoreDbContext context)
+        {
+            _context = context;
+        }
+    
 
         [HttpGet]
         public List<Book> GetBooks()
         {
-            var bookList = BookList.OrderBy(x => x.Id).ToList<Book>();
+            var bookList = _context.Books.OrderBy(x => x.Id).ToList<Book>();
             return bookList;
 
 
@@ -50,7 +32,7 @@ namespace BookStore.Controllers
         [HttpGet("{id}")] //roottan alıyoruz.Daha doğru olan yaklaşım budur yani roottan almaktır
         public Book GetById(int id)
         {
-            var book = BookList.Where(book => book.Id == id).SingleOrDefault();
+            var book = _context.Books.Where(book => book.Id == id).SingleOrDefault();
             return book;
 
 
@@ -68,12 +50,14 @@ namespace BookStore.Controllers
         [HttpPost]
         public IActionResult AddBook([FromBody] Book newbook)
         {
-            var book = BookList.SingleOrDefault(x=>x.Title==newbook.Title);
+            var book = _context.Books.SingleOrDefault(x=>x.Title==newbook.Title);
             if (book is not null)
             {
                 return BadRequest();
             }
-            BookList.Add(newbook);
+            _context.Books.Add(newbook);
+
+            _context.SaveChanges();
             return Ok();
         
         }
@@ -82,7 +66,7 @@ namespace BookStore.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateBook(int id, [FromBody] Book updatedbook)
         {
-            var book = BookList.SingleOrDefault(x => x.Id == id);
+            var book = _context.Books.SingleOrDefault(x => x.Id == id);
             if (book is null)
             {
                 return BadRequest();
@@ -91,7 +75,7 @@ namespace BookStore.Controllers
             book.PageCount = updatedbook.PageCount != default ? updatedbook.PageCount : book.PageCount;
             book.PublishDate = updatedbook.PublishDate != default ? updatedbook.PublishDate : book.PublishDate;
             book.Title = updatedbook.Title != default ? updatedbook.Title : book.Title;
-
+            _context.SaveChanges();
             return Ok();
 
         }
@@ -100,13 +84,13 @@ namespace BookStore.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteBook(int id)
         {
-            var book = BookList.SingleOrDefault(x => x.Id == id);
+            var book = _context.Books.SingleOrDefault(x => x.Id == id);
             if (book is null)
             {
                 return BadRequest();
             }
-            BookList.Remove(book);
-
+            _context.Books.Remove(book);
+            _context.SaveChanges();
             return Ok();
 
         }
