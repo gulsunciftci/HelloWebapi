@@ -1,8 +1,11 @@
-﻿using BookStore.DBOperations;
+﻿using BookStore.BookOperations.CreateBook;
+using BookStore.BookOperations.GetBooks;
+using BookStore.DBOperations;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using static BookStore.BookOperations.CreateBook.CreateBookCommand;
 
 namespace BookStore.Controllers
 {
@@ -21,10 +24,13 @@ namespace BookStore.Controllers
     
 
         [HttpGet]
-        public List<Book> GetBooks()
+        public IActionResult GetBooks()
         {
-            var bookList = _context.Books.OrderBy(x => x.Id).ToList<Book>();
-            return bookList;
+            //var bookList = _context.Books.OrderBy(x => x.Id).ToList<Book>();
+            //return bookList;
+            GetBooksQuery query = new GetBooksQuery(_context);
+            var result = query.Handle();
+            return Ok(result);
 
 
         }
@@ -48,17 +54,30 @@ namespace BookStore.Controllers
 
         //ekleme
         [HttpPost]
-        public IActionResult AddBook([FromBody] Book newbook)
+        public IActionResult AddBook([FromBody] CreateBookModel newBook)
         {
-            var book = _context.Books.SingleOrDefault(x=>x.Title==newbook.Title);
-            if (book is not null)
+            CreateBookCommand command = new CreateBookCommand(_context);
+            try
             {
-                return BadRequest();
+                command.Model = newBook;
+                command.Handle();
             }
-            _context.Books.Add(newbook);
-
-            _context.SaveChanges();
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
+            
             return Ok();
+            //var book = _context.Books.SingleOrDefault(x=>x.Title==newbook.Title);
+            //if (book is not null)
+            //{
+            //    return BadRequest();
+            //}
+            //_context.Books.Add(newbook);
+
+            //_context.SaveChanges();
+            //return Ok();
         
         }
 
