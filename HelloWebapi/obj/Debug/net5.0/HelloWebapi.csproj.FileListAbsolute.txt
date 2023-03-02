@@ -31,3 +31,13 @@ C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\Microsoft.Enti
 C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\AutoMapper.Collection.dll
+C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
+C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Hp\source\repos\HelloWebapi\HelloWebapi\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
