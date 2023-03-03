@@ -83,14 +83,17 @@ namespace BookStore.Controllers
         public IActionResult AddBook([FromBody] CreateBookModel newBook)
         {
             CreateBookCommand command = new CreateBookCommand(_context,_mapper);
-            try
-            {
+            //Buradaki try catchi CustomExceptionMiddleware içine yazdım
+
+            //try
+            //{
                 command.Model = newBook;
 
                 CreateBookCommandValidator validator=new CreateBookCommandValidator();
 
                 validator.ValidateAndThrow(command);
                 command.Handle();
+
                 //ValidationResult result = validator.Validate(command);
 
                 //if (!result.IsValid)
@@ -106,12 +109,12 @@ namespace BookStore.Controllers
                 //    command.Handle();
                 //}
 
-            }
+            //}
 
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            //catch (Exception ex)
+            //{
+            //    return BadRequest(ex.Message);
+            //}
 
 
             return Ok();
@@ -141,8 +144,7 @@ namespace BookStore.Controllers
             //book.PublishDate = updatedbook.PublishDate != default ? updatedbook.PublishDate : book.PublishDate;
             //book.Title = updatedbook.Title != default ? updatedbook.Title : book.Title;
 
-            try
-            {
+           
                 UpdateBookCommand command = new UpdateBookCommand(_context);
                 command.BookId = id;
                 command.Model = updatedbook;
@@ -150,12 +152,6 @@ namespace BookStore.Controllers
                 validator.ValidateAndThrow(command);
                 command.Handle();
 
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-
-            }
 
             return Ok();
 
@@ -173,18 +169,13 @@ namespace BookStore.Controllers
             //_context.Books.Remove(book);
             //_context.SaveChanges();
 
-            try
-            {
+            
                 DeleteBookCommand command = new DeleteBookCommand(_context);
                 command.BookId = id;
                 DeleteBookCommandValidator validator = new DeleteBookCommandValidator();
                 validator.Validate(command);
                 command.Handle();
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+           
             return Ok();
 
         }

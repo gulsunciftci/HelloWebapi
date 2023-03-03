@@ -1,4 +1,5 @@
 using BookStore.DBOperations;
+using BookStore.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -56,6 +57,8 @@ namespace BookStore
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCustomerExceptionMiddle();
 
             app.UseEndpoints(endpoints =>
             {

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Je5DnsUvmEt6EyBV/BhggahFamWwBWXzZUioRJytSAoAFu3oD9i0zsFTDMuKWuTtqlGfaJiRR0mw7WaBELJMtA==",
+  "dgSpecHash": "Yv8Mxx6kkkiKsneB4S6q9lnPQhc5GGQo6/RLBsM2lfnTOyJHL/CMwBXEXTPB1XMm6Mndem/r0otvR12CqVLM8w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hp\\source\\repos\\HelloWebapi\\MiddlewarePracties\\MiddlewarePracties.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hp\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Hp\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
     "C:\\Users\\Hp\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",

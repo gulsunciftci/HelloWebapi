@@ -41,3 +41,4 @@ C:\Users\Hp\source\repos\HelloWebapi\BookStore\bin\Debug\net5.0\System.Runtime.C
 C:\Users\Hp\source\repos\HelloWebapi\BookStore\bin\Debug\net5.0\FluentValidation.dll
 C:\Users\Hp\source\repos\HelloWebapi\BookStore\bin\Debug\net5.0\FluentValidation.AspNetCore.dll
 C:\Users\Hp\source\repos\HelloWebapi\BookStore\bin\Debug\net5.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Hp\source\repos\HelloWebapi\BookStore\bin\Debug\net5.0\Newtonsoft.Json.dll
