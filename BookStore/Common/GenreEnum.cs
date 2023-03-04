@@ -2,7 +2,7 @@
 {
     public enum GenreEnum
     {
-        PersonalGrowth=1,
+        PersonalGrowth,
         Sciencefiction,
         Noval,
 
