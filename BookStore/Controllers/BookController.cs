@@ -21,10 +21,11 @@ namespace BookStore.Controllers
 
     public class BookController : ControllerBase
     {
-        
-        private readonly BookStoreDbContext _context; //readonly değişkenler sadece constructor içinden değiştirilebilir
+
+        private readonly IBookStoreDbContext _context;
+        //private readonly BookStoreDbContext _context; //readonly değişkenler sadece constructor içinden değiştirilebilir
         private readonly IMapper _mapper;
-        public BookController(BookStoreDbContext context, IMapper mapper)
+        public BookController(IBookStoreDbContext context, IMapper mapper)
         {
             _mapper = mapper;
             _context = context;

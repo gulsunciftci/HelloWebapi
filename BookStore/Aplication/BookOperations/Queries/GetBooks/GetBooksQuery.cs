@@ -11,13 +11,17 @@ namespace BookStore.BookOperations.GetBooks
 {
     public class GetBooksQuery
     {
-        private readonly BookStoreDbContext _dbContext;
+        private readonly IBookStoreDbContext _dbContext;
         private readonly IMapper _mapper;
-        public GetBooksQuery(BookStoreDbContext dbContext, IMapper mapper) //Constructor
+       
+        public GetBooksQuery(IBookStoreDbContext dbContext, IMapper mapper) //Constructor
         {
             _mapper = mapper;
             _dbContext = dbContext;
         }
+
+     
+
         public List<BooksViewModel> Handle()
         {
             var bookList = _dbContext.Books.Include(x=>x.Genre).OrderBy(x => x.Id).ToList<Book>();

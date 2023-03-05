@@ -44,6 +44,8 @@ namespace BookStore
             //services.AddSingleton<ILoggerService, ConsoleLogger>();//console yazdýrmak için
             //Dbye yazdýrmak için
             services.AddSingleton<ILoggerService, DbLogger>();
+            services.AddScoped<IBookStoreDbContext>(provider => provider.GetService<BookStoreDbContext>());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

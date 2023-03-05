@@ -26,3 +26,4 @@ C:\Users\Hp\source\repos\HelloWebapi\MiddlewarePracties\obj\Debug\net5.0\refint\
 C:\Users\Hp\source\repos\HelloWebapi\MiddlewarePracties\obj\Debug\net5.0\MiddlewarePracties.pdb
 C:\Users\Hp\source\repos\HelloWebapi\MiddlewarePracties\obj\Debug\net5.0\MiddlewarePracties.genruntimeconfig.cache
 C:\Users\Hp\source\repos\HelloWebapi\MiddlewarePracties\obj\Debug\net5.0\ref\MiddlewarePracties.dll
+C:\Users\Hp\source\repos\HelloWebapi\MiddlewarePracties\bin\Debug\net5.0\Newtonsoft.Json.dll
